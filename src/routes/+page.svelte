@@ -3,7 +3,6 @@
 
   let url = ''
 
-  $: console.log('parsed source html', form?.html)
 
 </script>
 
@@ -11,7 +10,7 @@
   <label>Source URL
     <input name="url-input" type="text" bind:value={url} />
   </label>
-  <input type="submit" value="Read" />
+  <button type="submit">READ</button>
 </form>
 
 {#if form?.html}
@@ -22,5 +21,10 @@
   .url-input-wrapper {
     display: flex;
     flex-direction: column;
+  }
+
+  button {
+    height: 2rem;
+    width: 4.5rem;
   }
 </style>
