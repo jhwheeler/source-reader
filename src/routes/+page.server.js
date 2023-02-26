@@ -9,13 +9,9 @@ const getText = html => {
 
     const nodes = handler.root.childNodes
     const body = getBodyElement(nodes)
-    return htmlparser.DomUtils.getOuterHTML(body[0]?.children)
-}
+    const bodyWithoutScripts = body.children.filter((({ name }) => !name || name !== 'script'))
 
-function getBodyElement(dom) {
-  return htmlparser.DomUtils.find(function(element) {
-    return element.type === 'tag' && element.name === 'body'
-  }, dom, true, 1)
+    return htmlparser.DomUtils.getOuterHTML(bodyWithoutScripts)
 }
 
 async function fetchHTML (url) {
