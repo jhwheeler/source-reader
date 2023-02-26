@@ -1,4 +1,4 @@
-import htmlparser from 'htmlparser2'
+import * as htmlparser from 'htmlparser2'
 
 const getBodyElement = dom => htmlparser.DomUtils.findOne(
   ({ type, name}) => type === 'tag' && name === 'body',
