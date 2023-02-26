@@ -12,7 +12,7 @@ const getText = html => {
     return htmlparser.DomUtils.getOuterHTML(body[0]?.children)
 }
 
-const getBodyElement = function(dom) {
+function getBodyElement(dom) {
   return htmlparser.DomUtils.find(function(element) {
     return element.type === 'tag' && element.name === 'body'
   }, dom, true, 1)
@@ -25,14 +25,12 @@ async function fetchHTML (url) {
   const dom = htmlparser.parseDocument(html)
 
   const text = getText(html)
-  console.log('body', text)
   return text
 }
 
 export const actions = {
   default: async ({ request }) => {
     const data = await request.formData()
-    console.log('data', data)
 
     const url = data.get('url-input')
     const html = await fetchHTML(url)
